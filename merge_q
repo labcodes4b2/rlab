@@ -1,0 +1,89 @@
+import java.util.*;
+public class queue
+{ 
+int arr[],front,rear,size;
+	public queue(int s)
+	{
+	  size=s;
+	front=-1;
+	rear=-1;	
+	arr=new int[size];
+	    }
+void nque(int key)
+{
+	if(front==-1)
+	{  rear=rear+1;
+	   front=front+1; 
+	arr[front]=key;
+		
+
+	}
+	else if((rear<size)&&(front==0))
+	{ 
+	rear=rear+1;
+	arr[rear]=key;
+	
+	
+	}
+	else if(rear+1==size)
+	{
+	System.out.println("Queue is full"); 
+	}
+	else
+	{
+	System.out.println("Not possible as deletion is started from the que");
+	}
+  }
+  void display()
+{
+if(front==-1)
+{
+System.out.println("queue empty");
+}
+else if((rear>0)&&(rear<size))
+{
+for(int i=front;i<=rear;++i)
+		{ System.out.print(arr[i]+" "); }
+}
+}
+public static void main(String arg[])
+{
+Scanner get=new Scanner(System.in);
+System.out.println("Enter the size of the queue");
+int s=get.nextInt();
+queue q1=new queue(s);
+queue q2=new queue(s);
+queue q3=new queue(s*2);
+int key;
+int a=s;
+int b=s;
+System.out.println("Enter the data in queue 1");
+while(a!=0)
+{ 
+key=get.nextInt();
+q1.nque(key);
+a--;
+}
+System.out.println("Enter the data in queue 2");
+while(b!=0)
+{ 
+key=get.nextInt();
+q2.nque(key);
+b--;
+}
+for(int i=0;i<(s*2);i++)
+if(i%2==0)
+q3.nque(q1.arr[i/2]);
+else
+q3.nque(q2.arr[i/2]);
+
+for(int i=0;i<(s*2);i++)
+System.out.print(q3.arr[i]+" ");
+
+}
+}
+
+
+
+
+
